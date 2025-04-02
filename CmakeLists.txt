@@ -1,0 +1,66 @@
+# cmake_minimum_required(VERSION 3.0.0)
+# project(DeVenom_Resource_Downloader)
+
+# set(OSBits 32)
+# if(CMAKE_SIZEOF_VOID_P EQUAL 8)
+#     set(OSBits 64)
+# endif()
+
+# # Construct the output directory correctly
+# set(OutputDirectory "${CMAKE_SOURCE_DIR}/build/${CMAKE_SYSTEM_NAME}${OSBits}/${CMAKE_BUILD_TYPE}")
+
+# # Create directories if they do not exist.
+# file(MAKE_DIRECTORY "${OutputDirectory}/staticLibraries")
+# file(MAKE_DIRECTORY "${OutputDirectory}")
+
+# set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${OutputDirectory}/staticLibraries")
+# set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${OutputDirectory}")
+# set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${OutputDirectory}")
+
+# include_directories(../Dependencies/SPDLOG/include)
+
+# find_package(OpenGL REQUIRED)
+# include_directories(${OPENGL_INCLUDE_DIRS})
+
+# add_executable(${PROJECT_NAME} sandbox.cpp)
+# target_link_libraries(${PROJECT_NAME} ${OPENGL_LIBRARIES})
+
+
+
+
+cmake_minimum_required(VERSION 3.0.0)
+project(Installer)
+
+set(OSBits 32)
+if(CMAKE_SIZEOF_VOID_P EQUAL 8)
+    set(OSBits 64)
+endif()
+
+set(fullOutputDir "${CMAKE_SOURCE_DIR}/bin/${CMAKE_SYSTEM_NAME} ${OSBits}/${CMAKE_BUILD_TYPE}")
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${fullOutputDir}/staticLibraries")
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${fullOutputDir}")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${fullOutputDir}")
+
+set(includeDirectory0 "${CMAKE_SOURCE_DIR}../Dependencies/ImGUI")
+set(includeDirectory1 "${CMAKE_SOURCE_DIR}../Dependencies/SDL/include")
+set(includeDirectory2 "${CMAKE_SOURCE_DIR}../Dependencies/SPDLOG/include")
+
+include_directories(includeDirectory0) ###Similar To Additional Include Directories In Visual Studio Community
+include_directories(includeDirectory1)
+include_directories(includeDirectory2)
+
+###add_library(LibraryName SHARED lib.cpp) ### Use "SHARED" As LibraryName SHARED lib.cpp In Case If You Are Dealing With .dll/.so Files. Otherwise For Static Keep It As It Is.
+
+###For Third Party Libraries
+find_package(OPENGL REQUIRED)
+include_directories(${OPENGL_INCLUDE_DIRS})
+find_package(SPDLOG QUIET)
+include_directories(${SPDLOG_INCLUDE_DIRS})
+find_package(IMGUI QUIET)
+include_directories(${IMGUI_INCLUDE_DIRS})
+
+
+add_executable(${PROJECT_NAME} sandbox.cpp)
+target_link_libraries(${PROJECT_NAME} ${OPENGL_LIBRARIES})
+
+###target_link_libraries(${PROJECT_NAME} LibraryName)

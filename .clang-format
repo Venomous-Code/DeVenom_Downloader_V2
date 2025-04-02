@@ -1,0 +1,7 @@
+BasedOnStyle: Google
+Language: Cpp
+IndentWidth: 4
+TabWidth: 5
+UseTab: Never
+ContinuationIndentWidth: 4
+AllowShortLoopsOnASingleLine: true

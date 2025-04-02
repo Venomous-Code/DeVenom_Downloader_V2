@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="ImGui Dependencies">
+      <UniqueIdentifier>{45149b98-f0c2-44c9-b933-1c355c4813b4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Dependencies\ImGUI\imgui_demo.cpp">
+      <Filter>ImGui Dependencies</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Dependencies\ImGUI\imgui_draw.cpp">
+      <Filter>ImGui Dependencies</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Dependencies\ImGUI\imgui_tables.cpp">
+      <Filter>ImGui Dependencies</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Dependencies\ImGUI\imgui_widgets.cpp">
+      <Filter>ImGui Dependencies</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Dependencies\ImGUI\backends\imgui_impl_sdl3.cpp">
+      <Filter>ImGui Dependencies</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Dependencies\ImGUI\backends\imgui_impl_sdlgpu3.cpp">
+      <Filter>ImGui Dependencies</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Dependencies\ImGUI\backends\imgui_impl_sdlrenderer3.cpp">
+      <Filter>ImGui Dependencies</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Dependencies\ImGUI\imgui.cpp">
+      <Filter>ImGui Dependencies</Filter>
+    </ClCompile>
+    <ClCompile Include="Archiver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Core.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GUI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Logging.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Sandbox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Windowing.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Dependencies\ImGUI\imgui_internal.h">
+      <Filter>ImGui Dependencies</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Dependencies\ImGUI\imstb_rectpack.h">
+      <Filter>ImGui Dependencies</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Dependencies\ImGUI\imstb_textedit.h">
+      <Filter>ImGui Dependencies</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Dependencies\ImGUI\imstb_truetype.h">
+      <Filter>ImGui Dependencies</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Dependencies\ImGUI\backends\imgui_impl_sdl3.h">
+      <Filter>ImGui Dependencies</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Dependencies\ImGUI\backends\imgui_impl_sdlgpu3.h">
+      <Filter>ImGui Dependencies</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Dependencies\ImGUI\backends\imgui_impl_sdlgpu3_shaders.h">
+      <Filter>ImGui Dependencies</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Dependencies\ImGUI\backends\imgui_impl_sdlrenderer3.h">
+      <Filter>ImGui Dependencies</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Dependencies\ImGUI\imconfig.h">
+      <Filter>ImGui Dependencies</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Dependencies\ImGUI\imgui.h">
+      <Filter>ImGui Dependencies</Filter>
+    </ClInclude>
+    <ClInclude Include="Archiver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Core.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Dependencies.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GUI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Logging.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Windowing.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\Installer_Part\Installer\Installer\.clang-format">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\..\Installer_Part\Installer\Installer\CmakeLists.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+  </ItemGroup>
+</Project>
