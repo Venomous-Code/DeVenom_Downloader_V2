@@ -4,59 +4,93 @@
 
 void PackageInstaller::Archiver::ArchiverInit() {
 
-    archive* a = archive_write_new();
-    if (!a) {
-        std::cerr << "Error: Could not create archive writer." << std::endl;
+    archive* archiveWriter = archive_write_new();
+    if (!archiveWriter) {
+        Logs.CustomLogger("FAILED TO INITIALIZE THE ARCHIVE.",spdlog::level::critical);
     }
 
-    if (archive_write_set_format_pax_restricted(a) != ARCHIVE_OK) {
-        std::cerr << "Error setting format: " << archive_error_string(a)
-                  << std::endl;
-        archive_write_free(a);
+    if (archive_write_set_format_pax_restricted(archiveWriter) != ARCHIVE_OK) {
+        Logs.CustomLogger("ERROR SETTING FORMAT. ",
+                          spdlog::level::critical);
+        std::cerr<< archive_error_string(archiveWriter)<< std::endl;
+        archive_write_free(archiveWriter);
     }
 
-    if (archive_write_open_filename(a, "DeVenom_Downloader.tar") != ARCHIVE_OK) {
-        std::cerr << "Error opening output file: " << archive_error_string(a)
-                  << std::endl;
-        archive_write_free(a);
+    if (archive_write_open_filename(archiveWriter, "DeVenom_Downloader.tar") !=
+        ARCHIVE_OK) {
+        Logs.CustomLogger("ERROR OPENING OUTPUT FILE. ",
+                          spdlog::level::critical);
+        std::cerr << archive_error_string(archiveWriter) << std::endl;
+        archive_write_free(archiveWriter);
     }
 
     struct archive_entry* entry = archive_entry_new();
     if (!entry) {
-        std::cerr << "Error: Could not create archive entry." << std::endl;
-        archive_write_free(a);
+        Logs.CustomLogger("COULD NOT CREATE ARCHIVE ENTRY ",
+                          spdlog::level::critical);
+        archive_write_free(archiveWriter);
     }
-    archive_entry_set_pathname(entry, "Data.txt");
-    const char* fileData = "Hello, world!";
-    size_t fileSize = std::strlen(fileData);
-    archive_entry_set_size(entry, fileSize);      // File size in bytes.
-    archive_entry_set_filetype(entry, AE_IFREG);  // Regular file.
-    archive_entry_set_perm(entry, 0644);          // File permissions.
+    archive_entry_set_pathname(entry, "data.txt");
+    const char* filedata = "hello, world!";
+    size_t filesize = std::strlen(filedata);
+    archive_entry_set_size(entry, filesize);      // file size in bytes.
+    archive_entry_set_filetype(entry, AE_IFREG);  // regular file.
+    archive_entry_set_perm(entry, 0644);          // file permissions.
 
-    if (archive_write_header(a, entry) != ARCHIVE_OK) {
-        std::cerr << "Error writing header: " << archive_error_string(a)
-                  << std::endl;
+    if (archive_write_header(archiveWriter, entry) != ARCHIVE_OK) {
+        Logs.CustomLogger("ARCHIVE HEADER ERROR.",
+                          spdlog::level::critical);
+        std::cerr << archive_error_string(archiveWriter) << std::endl;
         archive_entry_free(entry);
-        archive_write_free(a);
+        archive_write_free(archiveWriter);
     }
 
-    size_t bytesWritten = archive_write_data(a, fileData, fileSize);
-    if (bytesWritten < 0) {
-        std::cerr << "Error writing data: " << archive_error_string(a)
-                  << std::endl;
+    size_t byteswritten = archive_write_data(archiveWriter, filedata, filesize);
+    if (byteswritten < 0) {
+        Logs.CustomLogger("FAILED TO WRITE DATA TO ARCHIVE.",
+                          spdlog::level::critical);
+        std::cerr << archive_error_string(archiveWriter) << std::endl;
         archive_entry_free(entry);
-        archive_write_free(a);
+        archive_write_free(archiveWriter);
     }
 
-    if (archive_write_finish_entry(a) != ARCHIVE_OK) {
-        std::cerr << "Error finishing entry: " << archive_error_string(a)
-                  << std::endl;
+    if (archive_write_finish_entry(archiveWriter) != ARCHIVE_OK) {
+        Logs.CustomLogger("FAILED TO TERMINATE THE ARCHIVE ENTRY. ",
+                          spdlog::level::critical);
+        std::cerr << archive_error_string(archiveWriter) << std::endl;
     }
 
     archive_entry_free(entry);
 
-    archive_write_close(a);
-    archive_write_free(a);
+    archive_write_close(archiveWriter);
+    archive_write_free(archiveWriter);
 
-    std::cout << "Archive created successfully as 'DeVenom_Downloader.tar'." << std::endl;
+    Logs.CustomLogger("ARCHIVE CREATED SUCCESSFULLY AS 'DeVenom_Downloader.tar' .",
+                      spdlog::level::info);
 }
+
+//void PackageInstaller::Archiver::ArchiverInit() {
+//    archive* archiveWriter = archive_write_new();
+//    if (archiveWriter != ARCHIVE_OK) {
+//        Logs.CustomLogger("FAILED TO INITIALIZE THE ARCHIVE.",
+//                          spdlog::level::critical);
+//        archive_write_close(archiveWriter);
+//        archive_write_free(archiveWriter);
+//    }
+//
+//    if (archive_write_set_bytes_per_block(archiveWriter, 4194304) !=
+//        ARCHIVE_OK) {
+//        Logs.CustomLogger("SETTING BYTES PER BLOCK NOT SUPPORTED.");
+//        archive_write_close(archiveWriter);
+//        archive_write_free(archiveWriter);    
+//    }
+//
+//    if (archive_write_add_filter_none(archiveWriter) != ARCHIVE_OK) {
+//        Logs.CustomLogger(
+//            "AN UNEXPECTED ERROR OCCURED DURING THE FILTER FUNCTION.");
+//        archive_write_close(archiveWriter);
+//        archive_write_free(archiveWriter);  
+//    }
+//
+//
+//}

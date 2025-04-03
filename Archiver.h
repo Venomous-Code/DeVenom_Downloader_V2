@@ -3,6 +3,7 @@
 #include <archive_entry.h>
 #include <iostream>
 #include <string>
+#include "Logging.h"
 
 namespace PackageInstaller {
 class Archiver {
@@ -11,7 +12,7 @@ class Archiver {
 
 
 	   private:
-
+    Logging Logs;
 	};
 
 }  // namespace PackageInstaller
