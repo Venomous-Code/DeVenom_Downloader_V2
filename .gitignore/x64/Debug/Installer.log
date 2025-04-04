@@ -1,4 +1,9 @@
-﻿  Archiver.cpp
+﻿  Core.cpp
+F:\Programming\Open Source Projects\DeVenom Resource Downloader\Installer\Installer\Installer\Core.h(9,1): warning C4005: 'ERROR': macro redefinition
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\wingdi.h(118): message : see previous definition of 'ERROR'
+  Sandbox.cpp
+F:\Programming\Open Source Projects\DeVenom Resource Downloader\Installer\Installer\Installer\Core.h(9,1): warning C4005: 'ERROR': macro redefinition
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\wingdi.h(118): message : see previous definition of 'ERROR'
   Windowing.cpp
   Generating Code...
   Installer.vcxproj -> F:\Programming\Open Source Projects\DeVenom Resource Downloader\Installer\Installer\x64\Debug\Installer.exe

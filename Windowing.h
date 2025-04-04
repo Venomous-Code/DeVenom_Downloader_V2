@@ -35,5 +35,6 @@ namespace PackageInstaller {
         //Variables
         bool QuitJob = false;
         bool isWindowClosed = false;
+        int count = 0;
     };
 }

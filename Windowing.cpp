@@ -58,7 +58,7 @@ PackageInstaller::Windowing::Windowing() {
 
         if (ToggleCounter >= 2) {
             nGui.BrowseDirectory();
-            if (ToggleCounter == 4) ToggleCounter = 2;
+            if (ToggleCounter >= 4) ToggleCounter = 2;
         }
 
         if (ImGui::Button(NextToBrowseButton, ImVec2(65, 25))) {
@@ -79,7 +79,12 @@ PackageInstaller::Windowing::Windowing() {
             if (!nGui.QuitCheck) {
                 //Do The Installation Job.
                 std::cout << "I Should Do The Installation Job." << std::endl;
-                arch.ArchiverInit();
+                arch.ArchiverInit("AppData\\Binaries\\DeVenom_Downloader.tar", AE_IFREG);
+                QuitToInstall = "FINISH";
+                count++;
+                if (count == 2) {
+                    QuitJob = true;
+                }
             } else {
                 //Do The Quit Job.
                /* std::cout << "I Should Do The Quit Job." << std::endl;*/
